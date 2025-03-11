@@ -5,14 +5,18 @@ const User=require('./models/User')
 const bcrypt=require('bcryptjs')
 
 const app=express()
-const PORT=7000
+const PORT=3001
 app.use(express.json())
 
-mongoose.connect(process.env.MONGO_URL).then(
-    ()=>console.log("DB connected successfully..")
-).catch(
-    (err)=>console.log(err)
-)
+mongoose.connect(
+    "mongodb+srv://tharun183:tharun183@recipescluster.37qdj.mongodb.net/rec-db?retryWrites=true&w=majority&appName=RecipesCluster",
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+    }).then(
+      console.log("DB connected...")
+    )
+  
 
 app.listen(PORT,(err)=>{
     if(err)
